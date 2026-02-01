@@ -1,1 +1,83 @@
-const a = require("axios"); const b = require("fs"); const c = require("path"); const d = require("yt-search"); const nix = "https://raw.githubusercontent.com/aryannix/stuffs/master/raw/apis.json"; module.exports = { config: { name: "sing", aliases: ["music", "song"], version: "0.0.1", author: "ArYAN", countDown: 5, role: 0, shortDescription: "Sing tomake chai", longDescription: "Search and download music from YouTube", category: "MUSIC", guide: "/music <song name or YouTube URL>" }, onStart: async function ({ api: e, event: f, args: g }) { if (!g.length) return e.sendMessage("❌ Provide a song name or YouTube URL.", f.threadID, f.messageID); let baseApi; const i = await e.sendMessage("🎵 Please wait...", f.threadID, null, f.messageID); try { const configRes = await a.get(nix); baseApi = configRes.data && configRes.data.api; if (!baseApi) throw new Error("Configuration Error: Missing API in GitHub JSON."); } catch (error) { e.unsendMessage(i.messageID); return e.sendMessage("❌ Failed to fetch API configuration from GitHub.", f.threadID, f.messageID); } let h = g.join(" "); try { let j; if (h.startsWith("http")) { j = h; } else { const k = await d(h); if (!k || !k.videos.length) throw new Error("No results found."); j = k.videos[0].url; } const l = `${baseApi}/play?url=${encodeURIComponent(j)}`; const m = await a.get(l); const n = m.data; if (!n.status || !n.downloadUrl) throw new Error("API failed to return download URL."); const o = `${n.title}.mp3`.replace(/[\\/:"*?<>|]/g, ""); const p = c.join(__dirname, o); const q = await a.get(n.downloadUrl, { responseType: "arraybuffer" }); b.writeFileSync(p, q.data); await e.sendMessage( { attachment: b.createReadStream(p), body: `🎵 𝗠𝗨𝗦𝗜𝗖\n━━━━━━━━━━━━━━━\n\n${n.title}` }, f.threadID, () => { b.unlinkSync(p); e.unsendMessage(i.messageID); }, f.messageID ); } catch (r) { console.error(r); e.sendMessage(`❌ Failed to download song: ${r.message}`, f.threadID, f.messageID); e.unsendMessage(i.messageID); } } };
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+module.exports = {
+  config: {
+    name: 'song',
+    author: 'Nyx',
+    usePrefix: false,
+    category: 'Youtube Song Downloader'
+  },
+  onStart: async ({ event, api, args, message }) => {
+    try {
+      const query = args.join(' ');
+      if (!query) return message.reply('Please provide a search query!');
+      
+      const searchResponse = await axios.get(`https://mostakim.onrender.com/mostakim/ytSearch?search=${encodeURIComponent(query)}`);
+      api.setMessageReaction("⏳", event.messageID, () => {}, true);
+
+      const parseDuration = (timestamp) => {
+        const parts = timestamp.split(':').map(part => parseInt(part));
+        let seconds = 0;
+
+        if (parts.length === 3) {
+          seconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
+        } else if (parts.length === 2) {
+          seconds = parts[0] * 60 + parts[1];
+        }
+
+        return seconds;
+      };
+
+      const filteredVideos = searchResponse.data.filter(video => {
+        try {
+          const totalSeconds = parseDuration(video.timestamp);
+          return totalSeconds < 600;
+        } catch {
+          return false;
+        }
+      });
+
+      if (filteredVideos.length === 0) {
+        return message.reply('No short videos found (under 10 minutes)!');
+      }
+
+      const selectedVideo = filteredVideos[0];
+      const tempFilePath = path.join(__dirname, 'temp_audio.m4a');
+      const apiResponse = await axios.get(`https://mostakim.onrender.com/m/sing?url=${selectedVideo.url}`);
+      
+      if (!apiResponse.data.url) {
+        throw new Error('No audio URL found in response');
+      }
+
+      const writer = fs.createWriteStream(tempFilePath);
+      const audioResponse = await axios({
+        url: apiResponse.data.url,
+        method: 'GET',
+        responseType: 'stream'
+      });
+
+      audioResponse.data.pipe(writer);
+      
+      await new Promise((resolve, reject) => {
+        writer.on('finish', resolve);
+        writer.on('error', reject);
+      });
+
+      api.setMessageReaction("✅", event.messageID, () => {}, true);
+
+      await message.reply({
+        body: `🎧 Now playing: ${selectedVideo.title}\nDuration: ${selectedVideo.timestamp}`,
+        attachment: fs.createReadStream(tempFilePath)
+      });
+
+      fs.unlink(tempFilePath, (err) => {
+        if (err) message.reply(`Error deleting temp file: ${err.message}`);
+      });
+
+    } catch (error) {
+      message.reply(`Error: ${error.message}`);
+    }
+  }
+};
