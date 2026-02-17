@@ -6,7 +6,7 @@ module.exports = {
 config: {
 name: "song",
 version: "2.3.0",
-author: "Milon",
+author: "imran  | fixed Milon",
 countDown: 5,
 role: 0,
 description: "Search and download songs without prefix",
