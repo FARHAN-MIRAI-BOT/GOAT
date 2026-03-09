@@ -12,7 +12,7 @@ module.exports = {
   },
 
   onStart: async function({ message }) {
-    const text = "🔗 My GitHub Repo:https://github.com/RAFI-GOAT-BOT-2/RAFI-GOAT-BOT-2";
+    const text = "🔗 My GitHub Repo:https://github.com/DJ-FARHAN-BOT";
     
     message.reply(text);
   }
