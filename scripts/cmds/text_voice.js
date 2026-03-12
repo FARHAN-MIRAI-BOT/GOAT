@@ -30,6 +30,7 @@ const voiceMap = {
 "বট": "https://files.catbox.moe/3u6shs.mp3",
 "bot": "https://files.catbox.moe/3u6shs.mp3",
 "Bot": "https://files.catbox.moe/3u6shs.mp3",
+"BOT": "https://files.catbox.moe/3u6shs.mp3",
 };
 
 if (voiceMap[input]) {
