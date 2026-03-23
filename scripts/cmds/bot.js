@@ -37,7 +37,7 @@ module.exports = {
 
             if (!args[0]) {
                 return api.sendMessage({
-                    body: `𓆩｟ ${name} ｠𓆪\nবলুন আমি "বট" আপনাকে কিভাবে সাহায্য করতে পারি? 😘`,
+                    body: `𓆩» ${name} «𓆪\nবলুন আমি "বট" আপনাকে কিভাবে সাহায্য করতে পারি? 😘`,
                     mentions: [{ tag: name, id: senderID }]
                 }, threadID, (err, info) => {
                     if (!err) global.GoatBot?.onReply?.set(info.messageID, { commandName, author: senderID });
@@ -102,7 +102,7 @@ module.exports = {
                 const rand = randomReplies[Math.floor(Math.random() * randomReplies.length)];
 
                 return api.sendMessage({
-                    body: `𓆩｟ ${name} ｠𓆪\n\n${rand}`,
+                    body: `𓆩» ${name} «𓆪\n\n${rand}`,
                     mentions: [{ tag: name, id: senderID }]
                 }, threadID, (err, info) => {
                     if (!err) global.GoatBot?.onReply?.set(info.messageID, { commandName, author: senderID });
