@@ -7,7 +7,7 @@ const doNotDelete = "[ F A R H A N ]";
 
 module.exports = {
   config: {
-    name: "help",
+    name: "help2",
     version: "1.17",
     author: "FARHAN",
     countDown: 5,
