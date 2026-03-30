@@ -14,7 +14,7 @@ module.exports = {
     category: "fun"
   },
 
-  onStart: async function ({ message, __GLOBAL }) {
+  onStart: async function({ message, __GLOBAL }) {
 
     // 🔒 Author lock
     if (module.exports.config.author !== "Farhan-Khan") {
@@ -22,24 +22,24 @@ module.exports = {
     }
 
     try {
-      // get bot prefix from global config
+      // Get bot prefix from config
       const prefix = __GLOBAL.config?.PREFIX || "";
 
-      // check if message is exactly the prefix
+      // Only trigger if message is exactly the prefix
       const msgText = (message.body || "").trim();
-      if (msgText !== prefix) return; // শুধু prefix দিলে reply
+      if (msgText !== prefix) return;
 
-      // Original quotes
+      // Random quotes
       const quotes = [
         "ღ••\n– কোনো নেতার পিছনে নয়.!!🤸‍♂️\n– মসজিদের ইমামের পিছনে দাড়াও জীবন বদলে যাবে ইনশাআল্লাহ.!!🖤🌻",
-        "-!\n__আল্লাহর রহমত থেকে নিরাশ হওয়া যাবে না!” আল্লাহ অবশ্যই তোমাকে ক্ষমা করে দিবেন☺️🌻\nসুরা যুমাহ্ আয়াত ৫২..৫৩💙🌸",
-        "- ইসলাম অহংকার করতে শেখায় না!🌸\n\n- ইসলাম শুকরিয়া আদায় করতে শেখায়!🤲🕋🥀",
-        "- বেপর্দা নারী যদি নায়িকা হতে পারে 🤗🥀\n- তবে পর্দাশীল নারী গুলো ইসলামের শাহাজাদী 🌺🥰\nমাশাল্লাহ।।",
-        "┏━━━━ ﷽ ━━━━┓\n🖤﷽স্মার্ট নয় ইসলামিক ﷽🥰\n🖤﷽ জীবন সঙ্গি খুঁজুন ﷽🥰\n┗━━━━ ﷽ ━━━━┛",
-        "ღ࿐– যখন বান্দার জ্বর হয় 😇\n🖤তখন গুনাহ গুলো ঝড়ে পড়তে থাকে☺️\n– হযরত মুহাম্মদ(সাঃ)",
+        "-!\n__আল্লাহর রহমত থেকে নিরাশ হওয়া যাবে না! আল্লাহ অবশ্যই ক্ষমা করে দিবেন☺️🌻",
+        "- ইসলাম অহংকার করতে শেখায় না!🌸 ইসলাম শুকরিয়া আদায় করতে শেখায়!🤲🕋🥀",
+        "- বেপর্দা নারী যদি নায়িকা হতে পারে 🤗🥀 তবে পর্দাশীল নারী ইসলামের শাহাজাদী 🌺🥰",
+        "┏━━━━ ﷽ ━━━━┓\n🖤﷽ স্মার্ট নয় ইসলামিক ﷽🥰\n🖤﷽ জীবন সঙ্গি খুঁজুন ﷽🥰\n┗━━━━ ﷽ ━━━━┛",
+        "ღ࿐– যখন বান্দার জ্বর হয় 😇🖤তখন গুনাহগুলো ঝড়ে পড়তে থাকে☺️\n– হযরত মুহাম্মদ(সাঃ)",
         "~🍂🦋 Happiness is enjoying the little things... Alhamdulillah 💗🥰",
-        "•___💜🌈___•\nতুমি আসক্ত হও, তবে নেশায় নয় আল্লাহর ইবাদতে 🖤✨",
-        "হাসতে হাসতে একদিন সবাইকে কাঁদিয়ে বিদায় নিবো 🙂💔",
+        "•___💜🌈___• তুমি আসক্ত হও, তবে নেশায় নয় আল্লাহর ইবাদতে 🖤✨",
+        "হাসতে হাসতে একদিন সবাইকে কাঁদিয়ে বিদায় নিবো 🙂💔",
         "🦋🥀 হাজারো স্বপ্নের শেষ ঠিকানা কবরস্থান 🤲",
         "প্রসঙ্গ যখন ধর্ম নিয়ে, ইসলামই সেরা ❤️",
         "কেউ পছন্দ না করলে কি যায় আসে, আল্লাহ তো পছন্দ করেই বানিয়েছে 🥰",
@@ -49,7 +49,7 @@ module.exports = {
         "আল্লাহর ভালোবাসা পেতে চাইলে রাসুল (সা:) কে অনুসরণ করো 🥰"
       ];
 
-      // Original images
+      // Random images
       const images = [
         "https://i.postimg.cc/7LdGnyjQ/images-31.jpg",
         "https://i.postimg.cc/65c81ZDZ/images-30.jpg",
