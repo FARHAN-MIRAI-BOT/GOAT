@@ -100,7 +100,7 @@ module.exports = {
   config: {
     name: "ttt",
     version: "3.0",
-    author: "EDEN",
+    author: "MR_FARHAN",
     role: 0,
     shortDescription: "Tic Tac Toe (vs AI or Friend)",
     longDescription: "Play Tic Tac Toe with either AI or a mentioned user",
