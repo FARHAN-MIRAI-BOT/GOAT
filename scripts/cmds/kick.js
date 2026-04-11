@@ -2,7 +2,7 @@ module.exports = {
 	config: {
 		name: "kick", // কমান্ডের নাম (এটি ইংরেজিতেই রাখতে হবে)
 		version: "1.7", // ভার্সন নম্বর
-		author: "Milon Hasan", // লেখকের নাম
+		author: "FARHAN-KHAN",
 		countDown: 5, // একবার ব্যবহারের পর ৫ সেকেন্ড অপেক্ষা করতে হবে
 		role: 1, // শুধুমাত্র এডমিনরা ব্যবহার করতে পারবে (Role 1 = Admin)
 		description: {
