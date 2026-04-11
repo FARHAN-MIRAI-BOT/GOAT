@@ -5,7 +5,7 @@ module.exports = {
     name: "anisearch",
     aliases: ["as", "animesearch"],
     version: "6.0",
-    author: "Sourav Ahmed",
+    author: "FARHAN-KHAN",
     countDown: 5,
     role: 0,
     shortDescription: "Sends anime video ",
