@@ -2,7 +2,7 @@ module.exports.config = {
     name: "chudi",
     version: "1.6",
     role: 2,
-    author: "Mesbah Bb'e+ xalman",
+    author: "FARHAN-KHAN",
     description: "Fast tag Banglish list (1-2 seconds gap)",
     category: "nsfw",
     guide: "{pn} @mention ba message-e reply din",
