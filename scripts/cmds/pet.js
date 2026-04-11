@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "pet",
     version: "1.0",
-    author: "nexo",
+    author: "FARHAN-KHAN",
     countDown: 5,
     role: 0,
     shortDescription: "Pet a user",
