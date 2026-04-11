@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "random",
     version: "2.1.0",
-    author: "milon",
+    author: "MR_FARHAN",
     countDown: 15, // ৫-১০ মিনিটের ভিডিওর জন্য সময় একটু বাড়িয়ে ১৫ করা হলো
     role: 0,
     shortDescription: "Sends a random video from the list",
