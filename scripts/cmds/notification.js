@@ -1,5 +1,6 @@
 const { getStreamsFromAttachment } = global.utils;
 const moment = require("moment-timezone");
+const crypto = require("crypto");
 
 module.exports = {
   config: {
@@ -30,6 +31,20 @@ module.exports = {
   },
 
   onStart: async function ({ message, api, event, args, commandName, envCommands, threadsData, getLang, usersData, config }) {
+
+    // 🔒 OWNER NAME LOCK (STRONG)
+    const originalAuthor = "FARHAN-KHAN";
+    const expectedHash = crypto.createHash("md5").update(originalAuthor).digest("hex");
+
+    const currentHash = crypto
+      .createHash("md5")
+      .update(module.exports.config.author)
+      .digest("hex");
+
+    if (currentHash !== expectedHash) {
+      return message.reply("⛔ Unauthorized edit detected! Command disabled.");
+    }
+
     const { delayPerGroup } = envCommands[commandName];
     const senderID = event.senderID;
     const senderName = await usersData.getName(senderID) || "Unknown User";
@@ -59,11 +74,9 @@ module.exports = {
       }
     }
 
-    
     const owner = "𓆩𝆠፝𝆠꯭፝֟𝆠፝𝐅𝐀𝐑𝐇𝐀𝐍-𝐊𝐇𝐀𝐍𝆠꯭፝֟𝆠꯭፝֟𓆪"; 
     const fb = "https://m.me/MR.FARHAN.420";
 
-    
     const formSend = {
       body:
 `╭━━〔 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗧𝗜𝗢𝗡 〕━━╮
