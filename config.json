@@ -9,39 +9,26 @@
     "intervalGetNewCookie": 1440,
     "notes": "Automatically retrieves new cookies every x minutes. Recommended: 1440 (1 day)."
   },
-
   "antiInbox": false,
   "language": "en",
   "notesLanguage": "change language using ISO 639-1 code",
-
-  "nickNameBot": "─꯭‎— 𝐏𝐨͜͡𝐥𝐚𝐁𝐚𝐳 𝐐͡𝐮𝐞͜𝐞𝐧:)>𝟑",
-
+  "nickNameBot": "─꯭𓆩»̶̶͓͓͓̽̽̽𝆠꯭፝֟𝐒𝐈𝐙𝐔𝐊𝐀𝆠꯭፝֟𓆩𝆠፝𝐁𝐀𝐁𝐘𝆠꯭፝֟𝆠꯭፝֟𓆪🐱🩵🪽",
   "prefix": "/",
-
   "adminOnly": {
     "enable": false,
     "ignoreCommand": []
   },
-
   "adminBot": [
-    "61583978867791",
-    "61587947897924"
+    "61570701574099",
+    "61573366160918",
+    " "
   ],
-
-  "security": {
-    "enableOwnerLock": true,
-    "ownerUID": "61573366160918",
-    "ownerIndex": 0,
-    "notes": "Do not change adminBot[0], bot will stop if modified"
-  },
-
   "reactUnsend": {
     "enable": true,
     "onlyAdmin": true,
-    "emojis": ["👌", "😾"],
+    "emojis": ["😾", "👌"],
     "notes": "If enable = true, bot will unsend any message reacted with these emojis. If onlyAdmin = true, only adminBot IDs can trigger it."
   },
-
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
@@ -50,13 +37,11 @@
     ],
     "notes": "If enabled, only IDs in whiteListIds can use the bot."
   },
-
   "whiteListModeThread": {
     "enable": false,
     "whiteListThreadIds": [],
     "notes": "If enabled, only threads in whiteListThreadIds can use the bot."
   },
-
   "database": {
     "type": "sqlite",
     "uriMongodb": "",
@@ -64,30 +49,25 @@
     "autoRefreshThreadInfoFirstTime": true,
     "notes": "Recommended using 'mongodb' or 'sqlite'."
   },
-
   "timeZone": "Asia/Dhaka",
-
   "credentials": {
     "gmailAccount": {
       "email": "botofnexxo@gmail.com",
       "clientId": "848792512039-g3mlfd39p9ttu82ga4kahk6kadjr0hcp.apps.googleusercontent.com",
       "clientSecret": "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",
-      "refreshToken": "1//04nBMNYnfbedsCgYIARAAGAQSNwF-L9IrmyZIKKZaDmN9aqXhIuO1wxk2jpkXPf3zuL_KN-IU99BNhW7eUGCFrDr0hJetNkBFExg",
+      "refreshToken": " ",
       "apiKey": ""
     },
-
     "gRecaptcha": {
       "siteKey": "6LfU0TUrAAAAAJVy_tm-q9xlEIEeyBK4N8VwuGdZ",
       "secretKey": "6LfU0TUrAAAAAOR_CE7oZV-8Eo83LsJmb12-lWFb"
     }
   },
-
   "dashBoard": {
     "enable": true,
     "expireVerifyCode": 300000,
     "port": 3001
   },
-
   "serverUptime": {
     "enable": false,
     "port": 3001,
@@ -97,38 +77,32 @@
       "verifyToken": ""
     }
   },
-
   "autoRestart": {
     "time": null,
     "notes": "Example: 60000 (1min), 3600000 (1hr), 0 0 * * * (daily)."
   },
-
   "autoUptime": {
     "enable": false,
     "timeInterval": 180,
     "url": "",
     "notes": "Time in seconds. Recommended for uptime monitors."
   },
-
   "autoLoadScripts": {
     "enable": false,
     "ignoreCmds": "",
     "ignoreEvents": "",
     "notes": "Automatically reloads scripts if edited."
   },
-
   "autoRefreshFbstate": true,
   "autoReloginWhenChangeAccount": false,
-  "autoRestartWhenListenMqttError": false,
-
+  "autoRestartWhenListenMqttError": true,
   "restartListenMqtt": {
     "enable": true,
-    "timeRestart": 3600000,
+    "timeRestart": 60000,
     "delayAfterStopListening": 2000,
     "logNoti": true,
-    "notes": "Restart listener every hour."
+    "notes": "Restart listener every 1 minute."
   },
-
   "notiWhenListenMqttError": {
     "notes": "Notification settings when MQTT stops listening.",
     "gmail": {
@@ -145,7 +119,6 @@
       "webhookUrl": ""
     }
   },
-
   "hideNotiMessage": {
     "commandNotFound": false,
     "adminOnly": false,
@@ -155,7 +128,6 @@
     "needRoleToUseCmdOnReply": false,
     "needRoleToUseCmdOnReaction": false
   },
-
   "logEvents": {
     "disableAll": false,
     "message": true,
@@ -167,7 +139,6 @@
     "typ": false,
     "presence": false
   },
-
   "optionsFca": {
     "forceLogin": true,
     "listenEvents": true,
