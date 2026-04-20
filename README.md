@@ -104,7 +104,7 @@ ______________________________________
 <img width="30px" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg">
 </a>
 
-<a href="https://www.instagram.com/mr_farhan.420">
+<a href="https://www.instagram.com/mr.farhan.420">
 <img width="30px" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg">
 </a>
 
