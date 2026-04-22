@@ -69,10 +69,7 @@ module.exports = {
       return `
 ━━━━━━━━━━━━━━━━━━━━
 - ${text}
-━━━━━━━━━━━━━━━━━━━━
-   [>ʙᴏᴛ ᴏᴡɴᴇʀ:-ꜰᴀʀʜᴀɴ-ᴋʜᴀɴ<]
-━━━━━━━━━━━━━━━━━━━━
-      `;
+━━━━━━━━━━━━━━━━━━━━`;
     };
 
     const rawCaption = captions[Math.floor(Math.random() * captions.length)];
