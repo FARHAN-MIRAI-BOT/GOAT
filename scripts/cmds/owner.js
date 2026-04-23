@@ -62,10 +62,10 @@ module.exports = {
 ➤ https://wa.me/+8801934640061
 
 [🌍] 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❶)
-➤ https://m.me/MR.FARHAN.420
+➤ https://m.me/61560833120754
 
 [🌍] 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 𝐈𝐃 (❷)
-➤ https://www.facebook.com/MR.FARHAN.420
+➤ https://www.facebook.com/61560833120754
 
 ╚═══❖𝗧𝗛𝗔𝗡𝗞 𝗬𝗢𝗨❖═══╝`;
 
@@ -74,7 +74,7 @@ module.exports = {
 
     if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
 
-    const imgLink = "https://i.imgur.com/aeYswQs.jpeg";
+    const imgLink = "https://i.imgur.com/T8IQ8lb.jpeg";
 
     const send = () => {
       api.sendMessage(
