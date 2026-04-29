@@ -6,17 +6,18 @@ const activeMurgi = new Map();
 module.exports = {
   config: {
     name: "murgi",
-    version: "1.1.0",
+    version: "3.0.0",
     role: 2,
     author: "FARHAN-KHAN",
-    description: "Loop bad word messages until stopped",
+    description: "Loop message with real name mention",
     category: "fun",
-    usages: "@mention | off",
+    usages: "reply | off",
     cooldowns: 5,
   },
 
-  onStart: async function({ message, event, args }) {
-    // OFF command
+  onStart: async function ({ message, event, args, api }) {
+
+    // 🛑 STOP COMMAND
     if (args[0] && args[0].toLowerCase() === "off") {
       if (activeMurgi.has(event.threadID)) {
         activeMurgi.set(event.threadID, false);
@@ -26,13 +27,29 @@ module.exports = {
       }
     }
 
-    const mention = Object.keys(event.mentions)[0];
-    if (!mention) {
-      return message.reply("Please @mention a target first!");
+    // 🎯 TARGET (reply user OR sender)
+    const targetID = event.messageReply
+      ? event.messageReply.senderID
+      : event.senderID;
+
+    // 🔥 REAL NAME FETCH (FIX)
+    let name = "User";
+    try {
+      const userInfo = await api.getUserInfo(targetID);
+      name = userInfo[targetID]?.name || "User";
+    } catch (e) {
+      console.error("Name fetch failed:", e);
     }
 
-    const name = event.mentions[mention];
-    const arraytag = [{ id: mention, tag: name }];
+    const mentionTag = [{
+      id: targetID,
+      tag: name
+    }];
+
+    // ❗ prevent duplicate loop
+    if (activeMurgi.get(event.threadID)) {
+      return message.reply("⚠️ Murgi already running!");
+    }
 
     const messages = [
       "খা*নকির পোলা রেডি তো চু*দা খাওয়ার জন্য 😈 ",
@@ -75,7 +92,7 @@ module.exports = {
         " ️️️️️⎯⎯   কিরে পা চাটা কুত্তা মাগির পুত ? তোর মারে নাকি তোর দাদা সুদে।😔😦",
         " ___তর মার ভুদায় ডিজেল ডেলে আগুুন লাগিয়া  দূর দিমো মাগির পোলা  //🌽🐹🍾🧜‍♀️",
         " তর মারে ১২ মাস চুদে গেলেও ওর ভোদার কিছু হবে না কারন মাগি তো ভোদা লোহা বানায় দিছে 😹💥🦶",
-        "😹_____ তোর কচি বোনকে বিয়ে দিবি রেন্ডি মাগির বাচ্চা!👅 ",
+        "😹_____ তোর কচি বোনকে বিয়ে দিবি রেন্ডি মাগির বাচ্চা!👅"
     ];
 
     activeMurgi.set(event.threadID, true);
@@ -87,16 +104,19 @@ module.exports = {
           if (!activeMurgi.get(event.threadID)) break;
 
           await delay(2500);
-          message.reply({
+
+          await message.reply({
             body: `${name}\n${msg}`,
-            mentions: arraytag
+            mentions: mentionTag
           });
         }
       }
     } catch (err) {
       console.error(err);
       activeMurgi.delete(event.threadID);
-      message.reply("Something went wrong!");
+      message.reply("❌ Error occurred!");
     }
+
+    activeMurgi.delete(event.threadID);
   }
 };
