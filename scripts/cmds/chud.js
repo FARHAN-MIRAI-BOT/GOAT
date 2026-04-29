@@ -1,41 +1,24 @@
 module.exports = {
-  config: {
-    name: "war",
-    aliases: ["chud"],
-    version: "1.1",
-    author: "MR_FARHAN",
-    role: 2,
-    category: "admin",
-    guide: {
-      vi: "Not Available",
-      en: "chud @(mention) | off"
-    } 
-  },
+config: {
+name: "war",
+aliases: ["chud"],
+version: "1.0",
+author: "MR_FARHAN",
+role: 2,
+category: "admin",
+guide: {
+vi: "Not Available",
+en: "chud @(mention)"
+}
+},
 
-  active: new Map(),
-
-  onStart: async function ({ api, event, args }) {
-
-    const threadID = event.threadID;
-
-    // 🛑 OFF COMMAND
-    if (args[0] && args[0].toLowerCase() === "off") {
-      this.active.set(threadID, false);
-      return api.sendMessage("🛑 ওকে বস ওর আর চুদবো না।", threadID);
-    }
-
-    var mention = Object.keys(event.mentions)[0];
-    if (!mention)
-      return api.sendMessage("👉 বস যাকে চুদ্দে চাউ তার আইডি @ম্যানশন দেউ__//🖕🥵", threadID);
-
-    let name = event.mentions[mention];
-    var arraytag = [{ id: mention, tag: name }];
-
-    this.active.set(threadID, true);
-
-    var a = (msg) => api.sendMessage(msg, threadID);
-    const check = () => this.active.get(threadID);
-
+onStart: async function ({ api, event, userData, args }) {
+var mention = Object.keys(event.mentions)[0];
+if(!mention) return api.sendMessage("👉 বস যাকে চুদ্দে চাউ তার আইডি @ম্যানশন দেউ__//🖕🥵", event.threadID);
+let name =  event.mentions[mention];
+var arraytag = [];
+arraytag.push({id: mention, tag: name});
+var a = function (a) { api.sendMessage(a, event.threadID); }
 setTimeout(() => {a({body: "কিরে মাদারচোত ফারহান বস এর চুদন খাওয়ায় জন্য রেডি তো?" + "লে চুদা খা মাঙ্গের বেটা 😂😂" + name, mentions: arraytag})}, 3000);
 setTimeout(() => {a({body: "মাঘি চুদা শরের বাচ্চা কার লগে পঙ্গা নিতে আসছিস 🤬🤬🤬" + " " + name, mentions: arraytag})}, 5000);
 setTimeout(() => {a({body: " চুদে গুহা ফাঁক করে দিব খানকীর পোলা 🤤" + " " + name, mentions: arraytag})}, 7000);
@@ -77,6 +60,5 @@ setTimeout(() => {a({body: "বোকাচোদার বাচ্চা 😍"
 setTimeout(() => {a({body: "আমি নাকি বট তোর মা কে চুদী পকাত পট" + " " + name, mentions: arraytag})} , 82000);
 setTimeout(() => {a({body: " হোল কাটে নিবো মঙ্গের বেটা কার লগে লাগতে আসছিস 🤬" + " " + name, mentions: arraytag})} , 84000);
 setTimeout(() => {a({body: "ফারহান বস এর চুদন কেমন লাগলো বাচ্চা 🤣🤣🤣🤣??" + " " + name, mentions: arraytag})} , 84000);
-
-  }
-};
+}
+}; 
