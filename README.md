@@ -81,7 +81,7 @@ ______________________________________
 ## 📞 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐌𝐄
 
 ### 🔵 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊
-<a href="https://www.facebook.com/MUNNA.VAI.MBS">
+<a href="https://www.facebook.com/MR.MUNNA.220">
 <img src="https://img.shields.io/badge/Facebook-ff0000?style=for-the-badge&logo=facebook&logoColor=white">
 </a>
 
@@ -100,7 +100,7 @@ ______________________________________
 <img width="30px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg">
 </a>
 
-<a href="https://www.facebook.com/MUNNA.VAI.MBS">
+<a href="https://www.facebook.com/MR.MUNNA.220">
 <img width="30px" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg">
 </a>
 
